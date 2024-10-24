@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-black via-[#2C0606] to-[#200202]">
+    <section className="py-8 sm:py-12 lg:py-16 bg-[#121212]">
       <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 px-4 sm:px-8 lg:px-16">
         {/* Text Section */}
         <div className="col-span-12 sm:col-span-8 place-self-center text-center sm:text-left">
@@ -52,15 +52,41 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Image Section */}
-        <div className="col-span-12 sm:col-span-4 place-self-center mt-8 sm:mt-0 relative">
-          <div className="rounded-full bg-[#2C0606] w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] lg:w-[400px] lg:h-[400px] relative overflow-hidden">
+        {/* Image Section with RGB Backlight */}
+        <div className="col-span-12 sm:col-span-4 place-self-center mt-8 sm:mt-0 relative flex justify-center">
+          {/* RGB Glow Effect with Lucifer-Inspired Colors */}
+          <div
+            className="absolute w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] lg:w-[400px] lg:h-[400px] rounded-full animate-pulse"
+            style={{
+              background: "linear-gradient(45deg, #3D0F0F, #B81010, #FFB500, #6A0C0C)", // Dark red to gold
+              filter: "blur(50px)",
+              animation: "rgbPulse 6s ease-in-out infinite",
+            }}
+          ></div>
+          
+          {/* Keyframes for RGB Pulse Animation */}
+          <style jsx>{`
+            @keyframes rgbPulse {
+              0% {
+                transform: scale(1);
+              }
+              50% {
+                transform: scale(1.1);
+              }
+              100% {
+                transform: scale(1);
+              }
+            }
+          `}</style>
+
+          {/* Image */}
+          <div className="relative w-[150px] h-[150px] sm:w-[250px] sm:h-[250px] lg:w-[400px] lg:h-[400px] overflow-hidden rounded-full">
             <Image
-              src="/images/felix.png"
+              src="/images/paw.png"
               alt="hero image"
-              className="rounded-full object-cover absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              width={400}
-              height={400}
+              className="rounded-full object-cover"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
         </div>
